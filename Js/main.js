@@ -7,24 +7,18 @@ let placas = [
     { nombre: "rtx3070", precio: 500, descripcion: "placa potente" },
     { nombre: "radeon7600", precio: 450, descripcion: "placa media" },
     { nombre: "intelceleron", precio: 200, descripcion: "placa mala" }
-]
+];
 
 function buscar(input, placas) {
-    let resultados = [];
-
-    for (let i = 0; i < placas.length; i++) {
-        if (placas[i].nombre.includes(input)) {
-            resultados.push(placas[i]);
-        }
-    }
+    let resultados = placas.filter(placa => placa.nombre.includes(input));
 
     if (resultados.length === 0) {
         console.log("No se encontraron resultados.");
     } else {
         console.log("Resultados encontrados:");
-        for (let i = 0; i < resultados.length; i++) {
-            console.log(`Nombre: ${resultados[i].nombre}, Precio: $${resultados[i].precio}, Descripción: ${resultados[i].descripcion}`);
-        }
+        resultados.forEach(placa => {
+            console.log(`Nombre: ${placa.nombre}, Precio: $${placa.precio}, Descripción: ${placa.descripcion}`);
+        });
     }
 }
 
